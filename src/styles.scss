@@ -28,6 +28,7 @@ body{
         left: 40px;
         font-size: 35px;
         color: #fff;
+        animation: moveInTop .8s ease-in-out;
     }
 }
 .heading__primary{
@@ -37,16 +38,118 @@ body{
     transform: translate(-50%, -50%);
     color: #fff;
     text-transform: uppercase;
+    text-align: center;
     &--main{
         display: block;
         font-size: 60px;
         font-weight: 400;
         letter-spacing: 35px;
+        animation: moveInLeft .8s ease-in-out;
     }
     &--sub{
         display: block;
-        font-size: 23px;
+        font-size: 24px;
         font-weight: 700;
         letter-spacing: 15px;
+        animation: moveInRight .8s ease-in-out;
+    }
+}
+
+//animations
+@keyframes moveInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80%{
+        opacity: .8;
+        transform: translateX(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes moveInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80%{
+        opacity: .8;
+        transform: translateX(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes moveInTop {
+    0%{
+        opacity:0;
+        transform:translateY(-100px)
+    }
+    80%{
+        opacity: .8;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes moveInbottom{
+    0%{
+        opacity: 0;
+        transform: translateY(100px)
+    }
+    80%{
+        opacity: .8;
+        transform: translateY(-10px);
+    }
+    100%{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+//button styles
+.btn{
+    
+    &:link, &:visited{
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 15px 40px;
+        display: inline-block;
+    }
+}
+.btn--white{
+    background-color: #fff;
+    color: #777;
+    margin-top: 10px;
+    transition: all .3s ease-in-out;
+    border-radius: 25px;
+    animation: moveInbottom 1s ease-in-out;
+    position: relative;
+    
+    &:hover{
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+       
+    }
+    &:active{
+        transform: translateY(1px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    }
+    &::after{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        background-color: fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
     }
 }
