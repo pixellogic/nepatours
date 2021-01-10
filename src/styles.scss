@@ -39,6 +39,7 @@ body{
     color: #fff;
     text-transform: uppercase;
     text-align: center;
+  
     &--main{
         display: block;
         font-size: 60px;
@@ -52,6 +53,7 @@ body{
         font-weight: 700;
         letter-spacing: 15px;
         animation: moveInRight .8s ease-in-out;
+        margin-bottom: 30px;
     }
 }
 
@@ -112,6 +114,21 @@ body{
         transform: translateY(0);
     }
 }
+@keyframes moveInTop{
+    0%{
+        opacity: 0;
+        transform: translateY(100px)
+    }
+    80%{
+        opacity: .8;
+        transform: translateY(-10px);
+    }
+    100%{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
 //button styles
 .btn{
     
@@ -120,25 +137,17 @@ body{
         text-transform: uppercase;
         padding: 15px 40px;
         display: inline-block;
+        border-radius: 25px;
+        transition: all .2s;
+        position: relative;
     }
-}
-.btn--white{
-    background-color: #fff;
-    color: #777;
-    margin-top: 10px;
-    transition: all .3s ease-in-out;
-    border-radius: 25px;
-    animation: moveInbottom 1s ease-in-out;
-    position: relative;
-    
     &:hover{
-        transform: translateY(-4px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
-       
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     }
     &:active{
         transform: translateY(1px);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
     }
     &::after{
         content: "";
@@ -146,10 +155,27 @@ body{
         height: 100%;
         width: 100%;
         border-radius: 25px;
-        background-color: fff;
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
+        transition: all .3s;
+    
     }
+    &:hover::after{
+        transform: scaleX(2);
+        opacity: 0;
+    }
+}
+.btn--white{
+    background-color: #fff;
+    color: #777;
+    &::after{
+        background-color: #fff;
+        
+    }
+}
+.btn--animated{
+    animation: moveInTop .5s ease-in-out .75s;
+    animation-fill-mode: backwards;
 }

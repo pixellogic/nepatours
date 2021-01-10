@@ -9,7 +9,7 @@ export default function Header() {
             <div className = "heading__primary">
                 <span className = "heading__primary--main">outdoors</span>
                 <span className = "heading__primary--sub">is where life happens</span>
-                <a href = "#" className = "btn btn--white">Discover our tours</a>
+                <a href = "#" className = "btn btn--white btn--animated">Discover our tours</a>
             </div>
         </div>
     )
