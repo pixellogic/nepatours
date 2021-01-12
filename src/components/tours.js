@@ -3,7 +3,7 @@ import HeadingSecondary from './headings/headingSecondary'
 import Cards from'./cards'
 export default function Tours() {
     return (
-        <div className = "section-tours">
+        <div className = "section-tours " id = "section-tours">
             <HeadingSecondary cta = "Explore our tours" />
             <div className= "row">
                 <div className = "col-1-of-3">
@@ -17,7 +17,7 @@ export default function Tours() {
                 </div>
             </div>
             <div class = "u-center-text u-margin-bottom-8">
-                <a href = "#" className = "btn btn--green">discover all tours</a>
+                <a href = "#popup" className = "btn btn--green">discover all tours</a>
             </div>
         </div>
     )
