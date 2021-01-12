@@ -7,6 +7,7 @@ import Tours from './components/tours'
 import About from './components/about'
 import Story from './components/stories'
 import Booking from './components/bookings'
+import Footer from './components/footer'
 export default function App() {
     return (
         <div>
@@ -16,6 +17,7 @@ export default function App() {
             <Tours />
             <Story />
             <Booking />
+            <Footer />
         </div>
     )
 }
