@@ -2,6 +2,11 @@ $color_primary_green: #7ed56fb2;
 $color_secondary_green: #55c57a;
 $color_primary_dark: #28b485a9;
 
+$color_orange_light: #ffb900;
+$color_orange_medium: #ff7730;
+
+$color_blue_light: #2998ff;
+$color_blue_medium: #5643fa;
 $color_white: #fff;
 $color_grey_drak: #777;
 $color_black: #000;
@@ -164,7 +169,16 @@ body{
 
 //button styles
 .btn{
-    
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 2.5rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
     &:link, &:visited{
         text-decoration: none;
         text-transform: uppercase;
@@ -174,12 +188,16 @@ body{
         transition: all .2s;
         position: relative;
         font-size: 1.6rem;
+        //change for the button
+        border: none;
+        cursor: pointer;
     }
-    &:hover{
+    &:hover, &:focus{
         transform: translateY(-3px);
         box-shadow: 0 .5rem 1rem rgba($color_black, .2);
+        outline: none;
     }
-    &:active{
+    &:active, &:focus{
         transform: translateY(1px);
         box-shadow: 0 2px 5px rgba($color_black, .2);
     }
@@ -203,6 +221,14 @@ body{
 }
 .btn--white{
     background-color: $color_white;
+    color: $color_grey_drak;
+    &::after{
+        background-color: $color_white;
+        
+    }
+}
+.btn--green{
+    background-color: $color_primary_green;
     color: $color_grey_drak;
     &::after{
         background-color: $color_white;
@@ -243,6 +269,7 @@ body{
     max-width: $grid_width;
     margin: 0 auto;
     padding: 1rem 2.5rem;
+    text-align: center;
     
     &:not(:last-child){
         margin-bottom: $gutter_vertical;
@@ -354,6 +381,7 @@ $color-grey-light: #f7f7f7;
     background: linear-gradient(to right bottom, $color_primary_green, $color_primary_dark) ,url('./photo/bg1.jpg');
     transform: skewY(-7deg);
     margin-top: -25vh;
+    margin-bottom: 25vh;
     //direct child selector
     & > *{
         transform: skewY(7deg);
@@ -380,7 +408,307 @@ $color-grey-light: #f7f7f7;
         transform: translateY(-1.5rem) scale(1.1);
         box-shadow: 0 1rem 2rem rgba($color_black, .2);
     }
-    &__text{
+    
+}
 
+/*************************
+        section tours
+*************************/
+.section-tours{
+    background-color: $color_grey_light;
+    padding: 33vh  0;
+    margin-top: -39vh;
+  
+}
+.card{
+   
+    perspective: 150rem;
+    transition: all .5s ease-in-out;
+    position: relative;
+    height: 50rem;
+    overflow: hidden;
+    &__side{
+        
+        height: 50rem;
+        transition: all .5s;
+        color: #fff;
+        font-size: 3rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden;
+       
+       
+        &--back{
+         
+            transform: rotateY(180deg);
+            &--1{
+                background-image: linear-gradient(to right bottom, $color_orange_light, $color_orange_medium);
+            }
+            &--2{
+                background-image: linear-gradient(to right bottom, $color_blue_light, $color_blue_medium);
+            }
+            &--3{
+                background-image: linear-gradient(to right bottom, $color_primary_green, $color_primary_dark);
+            }
+        }
+    }
+    &:hover &__side--front{
+        transform: rotateY(-180deg);
+    }
+    &:hover &__side--back{
+        transform: rotateY(0);
+    }
+
+    //picture
+    &__picture{
+        background-size: cover;
+        height: 23rem;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        &--1{
+            background-image:linear-gradient(to right bottom, $color_orange_light, $color_orange_medium), url('/src/photo/bg1.jpg');
+            
+        }
+        &--2{
+            background-image: linear-gradient(to right bottom, $color_blue_light, $color_blue_medium), url('/src/photo/bg1.jpg');
+            
+        }
+        &--3{
+            background-image:linear-gradient(to right bottom, $color_primary_green, $color_primary_dark), url('/src/photo/bg1.jpg');
+            
+        }
+    }
+    &__heading{
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color_white;
+        position: absolute;
+        top: 10rem;
+        right: 2rem;
+        text-align: right;
+        width: 75%;
+        z-index: 5;
+        padding: .5rem;
+        
+        &--1{
+            background-image:linear-gradient(to right bottom, $color_orange_light, $color_orange_medium);
+            
+        }
+        &--2{
+            background-image: linear-gradient(to right bottom, $color_blue_light, $color_blue_medium);
+            
+        }
+        &--3{
+            background-image:linear-gradient(to right bottom, $color_primary_green, $color_primary_dark);
+            
+        }
+    }
+    &__details li{
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+        color: $color_grey_drak;
+        &:not(:last-child){
+            border-bottom: 1px solid #eee;
+        }
+    }
+    &__cta{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+    &__price-box{
+        text-align: center;
+        margin-bottom: 8rem;
+    }
+    &__price-only{
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+    &__price-value{
+        font-size: 6rem;
+        font-weight: 100;
+    }
+    a{
+        text-decoration: none;
+        color: $color_grey_drak;
+        background-color: $color_white;
     }
 }
+/***********************
+        Stories 
+***********************/
+section-stories{
+    padding: 15rem 0;
+    background-color: $color-grey-light;
+}
+.story{
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 5rem rgba($color_black, .2);
+    background-color: $color_white;
+    border-radius: 3px;
+    padding: 5rem;
+    padding-left: 8rem;
+    font-size: 1.5rem;
+    transform: skewX(-12deg);
+   
+    
+    &__shape{
+        width: 15rem;
+        
+        height: 15rem;
+        float: left;
+        shape-outside: circle(48% at 50% 50%);
+        clip-path:circle(45% at 50% 50%);
+        transform: translateX(-3rem);
+        position: relative;
+       
+
+    }
+    &__image{
+        height: 100%;
+        transform: skewX(12deg);
+        backface-visibility: hidden;
+        transition: all .5s;
+    }
+    &__caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,20%);
+        color: $color_white;
+        opacity: 0;
+        transition:  all .5s;
+        backface-visibility: hidden;
+    }
+    &:hover &__caption{
+        opacity: 1;
+        transform: translate(-50%,-50%);
+    }
+    &:hover &__image{
+        transform: scale(.95);
+        filter: blur(5px) brightness(80%);
+    }
+    & p{
+        transform: skewX(12deg);
+    }
+}
+/*****************************
+        Bookings
+*****************************/
+.section-book{
+    padding: 15rem 0;
+    background-image:linear-gradient(to right bottom, $color_primary_green, $color_primary_dark);
+}
+.book{
+    background-image: linear-gradient(108deg,
+                                      rgba($color_white, .8) 0%,
+                                      rgba($color_white, .8) 50%,
+                                    transparent 50%) ,
+                                      url(./photo/bg1.jpg);
+    background-size: 100%;
+    border-radius: 3px;
+    
+    box-shadow: 0 3rem 5rem rgba($color_black, .5);
+    text-align: left;
+    &__form{
+        width: 50%;
+        padding: 6rem;
+    }
+}
+.form{
+
+    &__group{
+        &:not(:last-child){
+            margin-bottom: 2rem;
+        }
+    }
+    &__input{
+        font-family: inherit;
+        font-size: 1.5rem;
+        color: inherit;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color_white, .5);
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 80%;
+        display: block;
+        transition: all .5s;
+        &:focus{
+            outline: none;
+            border-bottom: 3px solid $color_primary_green;
+            box-shadow: 0 1rem 2rem rgba($color_black, .2);
+        }
+        &:focus:invalid{
+            border-bottom: 3px solid $color_orange_light;
+        }
+        &::-webkit-input-placeholder{
+            color: #999;
+        }
+    }
+    &__label{
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        text-align: left;
+        transition: all .3s;
+    }
+    &__input:placeholder-shown + &__label{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+    &__radio-group{
+        width: 40%;
+        display: inline;
+    }
+    &__radio-label{
+        font-size: 1.5rem;
+        cursor: pointer;
+        position: relative;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    &__radio-input{
+        display: none;
+    }
+    &__radio-button{
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color_primary_dark;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: -.4rem;
+        left: 0;
+        &::after{
+            content: "";
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;   
+            border-radius: 50%;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color_primary_dark;
+            opacity: 0;
+            transition: all .2s;
+        }
+    }
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;
+    }
+}
+   
+   

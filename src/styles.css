@@ -244,6 +244,20 @@ body {
   }
 }
 
+.btn {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 2.5rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: relative;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+}
+
 .btn:link, .btn:visited {
   text-decoration: none;
   text-transform: uppercase;
@@ -254,16 +268,19 @@ body {
   transition: all .2s;
   position: relative;
   font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover, .btn:focus {
   -webkit-transform: translateY(-3px);
           transform: translateY(-3px);
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  outline: none;
 }
 
-.btn:active {
+.btn:active, .btn:focus {
   -webkit-transform: translateY(1px);
           transform: translateY(1px);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -296,6 +313,15 @@ body {
 }
 
 .btn--white::after {
+  background-color: #fff;
+}
+
+.btn--green {
+  background-color: #7ed56fb2;
+  color: #777;
+}
+
+.btn--green::after {
   background-color: #fff;
 }
 
@@ -340,6 +366,7 @@ body {
   max-width: 114rem;
   margin: 0 auto;
   padding: 1rem 2.5rem;
+  text-align: center;
 }
 
 .row:not(:last-child) {
@@ -475,6 +502,7 @@ body {
   -webkit-transform: skewY(-7deg);
           transform: skewY(-7deg);
   margin-top: -25vh;
+  margin-bottom: 25vh;
 }
 
 .section-features > * {
@@ -509,5 +537,362 @@ body {
           transform: translateY(-1.5rem) scale(1.1);
   -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
           box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+/*************************
+        section tours
+*************************/
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 33vh  0;
+  margin-top: -39vh;
+}
+
+.card {
+  -webkit-perspective: 150rem;
+          perspective: 150rem;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  position: relative;
+  height: 50rem;
+  overflow: hidden;
+}
+
+.card__side {
+  height: 50rem;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  color: #fff;
+  font-size: 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.card__side--back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.card__side--back--1 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#ffb900), to(#ff7730));
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+}
+
+.card__side--back--2 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#2998ff), to(#5643fa));
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+}
+
+.card__side--back--3 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#7ed56fb2), to(#28b485a9));
+  background-image: linear-gradient(to right bottom, #7ed56fb2, #28b485a9);
+}
+
+.card:hover .card__side--front {
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.card:hover .card__side--back {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0);
+}
+
+.card__picture {
+  background-size: cover;
+  height: 23rem;
+  background-blend-mode: screen;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+
+.card__picture--1 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#ffb900), to(#ff7730)), url("/src/photo/bg1.jpg");
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730), url("/src/photo/bg1.jpg");
+}
+
+.card__picture--2 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#2998ff), to(#5643fa)), url("/src/photo/bg1.jpg");
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa), url("/src/photo/bg1.jpg");
+}
+
+.card__picture--3 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#7ed56fb2), to(#28b485a9)), url("/src/photo/bg1.jpg");
+  background-image: linear-gradient(to right bottom, #7ed56fb2, #28b485a9), url("/src/photo/bg1.jpg");
+}
+
+.card__heading {
+  font-size: 2.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #fff;
+  position: absolute;
+  top: 10rem;
+  right: 2rem;
+  text-align: right;
+  width: 75%;
+  z-index: 5;
+  padding: .5rem;
+}
+
+.card__heading--1 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#ffb900), to(#ff7730));
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+}
+
+.card__heading--2 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#2998ff), to(#5643fa));
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+}
+
+.card__heading--3 {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#7ed56fb2), to(#28b485a9));
+  background-image: linear-gradient(to right bottom, #7ed56fb2, #28b485a9);
+}
+
+.card__details li {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+  color: #777;
+}
+
+.card__details li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.card__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 90%;
+  text-align: center;
+}
+
+.card__price-box {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.card__price-only {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.card__price-value {
+  font-size: 6rem;
+  font-weight: 100;
+}
+
+.card a {
+  text-decoration: none;
+  color: #777;
+  background-color: #fff;
+}
+
+/***********************
+        Stories 
+***********************/
+section-stories {
+  padding: 15rem 0;
+  background-color: #f7f7f7;
+}
+
+.story {
+  width: 75%;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 5rem;
+  padding-left: 8rem;
+  font-size: 1.5rem;
+  -webkit-transform: skewX(-12deg);
+          transform: skewX(-12deg);
+}
+
+.story__shape {
+  width: 15rem;
+  height: 15rem;
+  float: left;
+  shape-outside: circle(48% at 50% 50%);
+  -webkit-clip-path: circle(45% at 50% 50%);
+          clip-path: circle(45% at 50% 50%);
+  -webkit-transform: translateX(-3rem);
+          transform: translateX(-3rem);
+  position: relative;
+}
+
+.story__image {
+  height: 100%;
+  -webkit-transform: skewX(12deg);
+          transform: skewX(12deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.story__caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 20%);
+          transform: translate(-50%, 20%);
+  color: #fff;
+  opacity: 0;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.story:hover .story__caption {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.story:hover .story__image {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-filter: blur(5px) brightness(80%);
+          filter: blur(5px) brightness(80%);
+}
+
+.story p {
+  -webkit-transform: skewX(12deg);
+          transform: skewX(12deg);
+}
+
+/*****************************
+        Bookings
+*****************************/
+.section-book {
+  padding: 15rem 0;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#7ed56fb2), to(#28b485a9));
+  background-image: linear-gradient(to right bottom, #7ed56fb2, #28b485a9);
+}
+
+.book {
+  background-image: linear-gradient(108deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 50%, transparent 50%), url(./photo/bg1.jpg);
+  background-size: 100%;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.5);
+          box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+.book__form {
+  width: 50%;
+  padding: 6rem;
+}
+
+.form__group:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.form__input {
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  width: 80%;
+  display: block;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+.form__input:focus {
+  outline: none;
+  border-bottom: 3px solid #7ed56fb2;
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.form__input:focus:invalid {
+  border-bottom: 3px solid #ffb900;
+}
+
+.form__input::-webkit-input-placeholder {
+  color: #999;
+}
+
+.form__label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  margin-top: .7rem;
+  display: block;
+  text-align: left;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+          transform: translateY(-4rem);
+}
+
+.form__radio-group {
+  width: 40%;
+  display: inline;
+}
+
+.form__radio-label {
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.form__radio-input {
+  display: none;
+}
+
+.form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #28b485a9;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: -.4rem;
+  left: 0;
+}
+
+.form__radio-button::after {
+  content: "";
+  display: block;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #28b485a9;
+  opacity: 0;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1;
 }
 /*# sourceMappingURL=styles.css.map */
