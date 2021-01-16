@@ -30,6 +30,32 @@ $gutter_horizontal: 6rem;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/*******************
+        Media queries
+        order: base, typography, general layout, grid, pagelayout, components
+********************/
+@mixin respond($breakpoint){
+    @if $breakpoint == phone {
+        @media (max-width:37.5em){ //600px
+            @content
+        }
+    }
+    @if $breakpoint == tab-port {
+        @media (max-width:56.25em){ //900px
+            @content
+        }
+    }
+    @if $breakpoint == tab-land {
+        @media (max-width:75em){ //1200px
+            @content
+        }
+    }
+    @if $breakpoint == big-desktop {
+        @media (min-width:112.5em) {    //1800px
+            @content
+        }
+    }
+}
 
 //utility classes
 .u-center-text{
@@ -50,6 +76,20 @@ $gutter_horizontal: 6rem;
 }
 html{
     font-size: 62.5%;
+    @include respond(big-desktop){
+        font-size: 75% ;  //1rem = 12px, 12/16 = .75
+    }
+    @include respond(tab-land){
+        font-size: 56.25%; //1rem = 9px, 9/16 = .5625
+    }
+    
+    @include respond(tab-port){
+        font-size: 50% ; //1rem = 8px, 8/16 = .5
+    }
+    @include respond(phone){
+        font-size: 30% ;
+    }
+   
 }
 body{
     font-family: "lato", sans-serif;
@@ -58,6 +98,9 @@ body{
     color: $color_grey_drak;
     padding: 3rem;
     box-sizing: border-box;
+    @include respond(tab-port){
+        padding: 0;
+    }
 }
 .header{
     height: 95vh;
@@ -74,6 +117,9 @@ body{
         color: $color_white;
         animation: moveInTop .8s ease-in-out;
     }
+    @include respond(phone){
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
 }
 .heading__primary{
     position: absolute;
@@ -84,12 +130,17 @@ body{
     text-transform: uppercase;
     text-align: center;
   
+  
     &--main{
         display: block;
         font-size: 6rem;
         font-weight: 4rem;
         letter-spacing: 3.5rem;
         animation: moveInLeft .8s ease-in-out;
+        @include respond(phone){
+            letter-spacing: 1rem;
+            font-size: 5rem;
+        }
     }
     &--sub{
         display: block;
@@ -98,6 +149,10 @@ body{
         letter-spacing: 1.5rem;
         animation: moveInRight .8s ease-in-out;
         margin-bottom: 3rem;
+        @include respond(phone){
+            letter-spacing: .5rem;
+           
+        }
     }
 }
 
@@ -276,21 +331,36 @@ body{
     margin: 0 auto;
     padding: 1rem 2.5rem;
     text-align: center;
-    
+    @include respond(tab-port){
+        max-width: 50rem;
+    }
     &:not(:last-child){
         margin-bottom: $gutter_vertical;
+        @include respond(tab-port){
+            margin-bottom: 6rem;
+        }
+        
     }
     &::after{
         content: "";
         display: table;
         clear: both;
     }
-
+   
     .col-1-of-2{
         width: calc((100% - #{$gutter_horizontal})/2);
         float: left;
         &:not(:last-child){
             margin-right: $gutter_horizontal; 
+            margin-bottom: 6rem;
+        }
+        @include respond(tab-port){
+            width: 100% !important;
+        }
+        &:last-child{
+            @include respond(tab-port){
+                margin-bottom: 10rem;
+            }
         }
     }
     .col-1-of-3{
@@ -298,6 +368,13 @@ body{
         float: left;
         &:not(:last-child){
             margin-right: $gutter_horizontal;
+            @include respond(tab-port){
+                margin-right: 0;
+                margin-bottom: 6rem;
+             }
+        }
+        @include respond(tab-port){
+            width: 100% !important;
         }
     }
     .col-1-of-4{
@@ -305,6 +382,13 @@ body{
         float:left;
         &:not(:last-child){
             margin-right: $gutter_horizontal;
+            @include respond(tab-port){
+               margin-right: 0;
+               margin-bottom: 6rem;
+            }
+        }
+        @include respond(tab-port){
+            width: 100% !important;
         }
     }
 }
@@ -317,6 +401,10 @@ $color-grey-light: #f7f7f7;
     background-color: $color-grey-light;
     padding: 25rem 0 ;
     margin-top: -25vh;
+    @include respond(tab-port){
+        padding: 35rem 0;
+       
+    }
 
 }
 .heading-secondary{
@@ -329,6 +417,12 @@ $color-grey-light: #f7f7f7;
     color: transparent;
     transition: all .2s;
     letter-spacing: .2rem;
+    @include respond(tab-port){
+        font-size: 2.5rem;
+    }
+    @include respond(phone){
+        font-size: 2rem;
+    }
     &:hover{
         transform: skew(2deg, 12deg) scale(1.1);
         text-shadow: .5rem 1rem 2rem rgba($color_black, .2);
@@ -353,18 +447,35 @@ $color-grey-light: #f7f7f7;
         box-shadow: 0 1.5rem 4rem rgba($color_black, .2);
         border-radius: 3px;
         position: absolute;
+        @include respond(tab-port){
+         float:left;
+         position: relative;
+         width: 33.3333%;
+         box-shadow: 0 1.5rem 3rem rgba($color_black, .5);
+        }
 
         &--p1{
             top: -2rem;
             left: 0;
+            @include respond(tab-port){
+              top: 0;
+            }
         }
         &--p2{
             top: 0;
             right: 0;
+            @include respond(tab-port){
+                top: 0;
+                transform: scale(1.3);
+              }
         }
         &--p3{
             top: 10rem;
             left: 10rem;
+            @include respond(tab-port){
+                top: 0;
+                left: 0;
+              }
         }
         &:hover{
             outline: 1.5rem solid $color_primary_green;
@@ -391,6 +502,9 @@ $color-grey-light: #f7f7f7;
     //direct child selector
     & > *{
         transform: skewY(7deg);
+    }
+    @include respond(tab-port){
+        padding: 15rem 0;
     }
 }
 .feature-box{
@@ -422,9 +536,11 @@ $color-grey-light: #f7f7f7;
 *************************/
 .section-tours{
     background-color: $color_grey_light;
-    padding: 33vh  0;
+    padding: 33vh  0 15vh 0;
     margin-top: -39vh;
-  
+    @include respond(tab-port){
+        padding: 25rem 0 5rem 0;
+    }
 }
 .card{
    
@@ -546,13 +662,70 @@ $color-grey-light: #f7f7f7;
         color: $color_grey_drak;
         background-color: $color_white;
     }
+    @include respond(tab-port){
+       
+        height: auto;
+        border-radius: 3px;
+        background-color: $color_white;
+        box-shadow: 0 1rem 2rem rgba($color_black, .5);
+        &__side{
+            
+            height: auto;
+            transition: all .5s;
+            color: #fff;
+            font-size: 3rem;
+            position: relative;
+            box-shadow: none;
+           
+           
+            &--back{
+             
+                transform: rotateY(0);
+                clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+        &:hover &__side--front{
+            transform: rotateY(0);
+        }
+        &:hover &__side--back{
+            transform: rotateY(0);
+        }
+    
+       
+        &__cta{
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: translate(0);
+            width: 100%;
+            padding: 7rem 4rem 4rem 4rem;
+        }
+        &__price-box{
+            
+            margin-bottom: 3rem;
+        }
+      
+        &__price-value{
+            font-size: 6rem;
+          
+        }
+        a{
+            text-decoration: none;
+            color: $color_grey_drak;
+            background-color: $color_white;
+        }
+    }
 }
 /***********************
         Stories 
 ***********************/
-section-stories{
-    padding: 15rem 0;
+.section-stories{
+    padding: 20rem 0;
     background-color: $color-grey-light;
+    @include respond(tab-port){
+        padding: 5rem 0 5rem 0;
+        background-color: $color-grey-light;
+    }
 }
 .story{
     width: 75%;
@@ -564,7 +737,15 @@ section-stories{
     padding-left: 8rem;
     font-size: 1.5rem;
     transform: skewX(-12deg);
-   
+    
+    @include respond(tab-port){
+       margin-bottom: 3rem;
+       width: 100%;
+       padding: 4rem 7rem;
+    }
+    @include respond(phone){
+        transform: skew(0);
+    }
     
     &__shape{
         width: 15rem;
@@ -627,10 +808,30 @@ section-stories{
     &__form{
         width: 50%;
         padding: 6rem;
+        @include respond(tab-port){
+            width: 100%;
+         }
+    }
+    @include respond(tab-land){
+        background-image: linear-gradient(108deg,
+                                      rgba($color_white, .8) 0%,
+                                      rgba($color_white, .8) 80%,
+                                    transparent 80%) ,
+                                      url(./photo/bg1.jpg);
+                                      background-size: cover; 
+    }
+    @include respond(tab-port){
+        background-image: linear-gradient(108deg,
+        rgba($color_white, .8) 0%,
+        rgba($color_white, .8) 100%) ,
+        url(./photo/bg1.jpg);
+        background-size: cover; 
     }
 }
 .form{
-
+    @include respond(tab-port){
+       width: 100%;
+    }
     &__group{
         &:not(:last-child){
             margin-bottom: 2rem;
@@ -648,6 +849,9 @@ section-stories{
         width: 80%;
         display: block;
         transition: all .5s;
+        @include respond(tab-port){
+            width: 100%;
+         }
         &:focus{
             outline: none;
             border-bottom: 3px solid $color_primary_green;
@@ -725,6 +929,9 @@ section-stories{
     padding: 10rem 0;
     font-size: 1.4rem;
     text-align: center;
+    @include respond(tab-port){
+        padding: 8rem 0;
+    }
     &__logo-box{
         font-size: 10rem;
         
@@ -733,6 +940,10 @@ section-stories{
         border-top: 1px solid $color-grey-light;
         padding-bottom: 2rem;
         display: inline-block;
+        @include respond(tab-port){
+            width: 100%;
+            text-align: center;
+        }
     }
     &__list{
         list-style: none;
@@ -762,6 +973,10 @@ section-stories{
         border-top: 1px solid $color-grey-light;
         padding-bottom: 2rem;
         display: inline-block;
+        @include respond(tab-port){
+            width: 100%;
+            float: none;
+        }
     }
 }
 
@@ -785,6 +1000,14 @@ section-stories{
         box-shadow: 0 1rem 3rem rgba($color_black, .2);
         text-align: center;
         cursor: pointer;
+        @include respond(tab-port){
+                top: 4rem;
+                right: 4rem;
+        }
+        @include respond(phone){
+            top: 3rem;
+            right: 3rem;
+        }
     }
     &__background{
         height: 6rem;
@@ -796,6 +1019,14 @@ section-stories{
         background-image: radial-gradient($color_secondary_green, $color_primary_dark);
         z-index: 15;
         transition: transform .3s cubic-bezier(0,.51,.89,-0.01);
+        @include respond(tab-port){
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+        @include respond(phone){
+            top: 3.5rem;
+            right: 3.5rem;
+        }
     }
     &__nav{
         height: 100vh;
